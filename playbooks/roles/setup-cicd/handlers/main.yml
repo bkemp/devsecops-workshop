@@ -1,0 +1,8 @@
+---
+
+- name: Restart sshd
+  service: name=sshd state=restarted
+  register: restart_status
+  until: restart_status|success
+  retries: 30
+  delay: 5
